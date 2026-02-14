@@ -48,7 +48,6 @@ export class Login {
     const { username, password } = this.loginForm.value;
 
     if (this.isLoginMode) {
-      // Вход
       this.apiService.login(username, password).subscribe({
         next: (res: any) => {
           localStorage.setItem('token', res.access_token);
@@ -56,23 +55,19 @@ export class Login {
         },
         error: (err: any) => {
           console.error('Login failed', err);
-          // здесь можно показать всплывающее сообщение
         }
       });
     } else {
-      // Регистрация
       this.apiService.register(username, password).subscribe({
         next: (res: any) => {
-          // После успешной регистрации переключаемся на режим входа
           this.isLoginMode = true;
           this.loginForm.reset();
-          // опционально сообщение "Регистрация успешна, войдите"
         },
         error: (err: any) => {
           console.error('Registration failed', err);
-          // показать ошибку (например, пользователь уже существует)
         }
       });
     }
   }
 }
+
