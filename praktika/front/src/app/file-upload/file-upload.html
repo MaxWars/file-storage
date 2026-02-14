@@ -1,0 +1,22 @@
+<h2 mat-dialog-title>Загрузить файл</h2>
+<mat-dialog-content>
+  <form [formGroup]="uploadForm">
+    <mat-form-field appearance="fill" class="full-width">
+      <mat-label>Описание</mat-label>
+      <input matInput formControlName="description">
+    </mat-form-field>
+
+    <mat-form-field appearance="fill" class="full-width">
+      <mat-label>Тема</mat-label>
+      <input matInput formControlName="theme">
+    </mat-form-field>
+
+    <div class="file-input">
+      <input type="file" (change)="onFileSelected($event)" accept="*/*">
+    </div>
+  </form>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-button mat-dialog-close>Отмена</button>
+  <button mat-raised-button color="primary" (click)="onSubmit()" [disabled]="!selectedFile">Загрузить</button>
+</mat-dialog-actions>
