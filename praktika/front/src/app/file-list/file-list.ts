@@ -4,7 +4,7 @@ import { Router } from '@angular/router';
 import { MatTableModule } from '@angular/material/table';
 import { MatButtonModule } from '@angular/material/button';
 import { MatDialogModule } from '@angular/material/dialog';
-import { MatIconModule } from '@angular/material/icon'; // для кнопки с плюсом
+import { MatIconModule } from '@angular/material/icon';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatDialog } from '@angular/material/dialog';
 import { ApiService } from '../services/api';
@@ -36,7 +36,7 @@ export class FileList implements OnInit {
   constructor(
     private api: ApiService,
     private dialog: MatDialog,
-    private router: Router   // добавить
+    private router: Router
   ) {}
 
   ngOnInit() {
@@ -74,4 +74,5 @@ export class FileList implements OnInit {
   }
 
 }
+
 
