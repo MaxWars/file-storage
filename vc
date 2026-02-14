@@ -4,10 +4,3 @@ Cross-Origin Request Blocked: The Same Origin Policy disallows reading the remot
 
 Registration failed 
 Object { headers: {…}, status: 0, statusText: "Unknown Error", url: "http://localhost:8000/auth/register", ok: false, type: undefined, redirected: undefined, responseType: undefined, name: "HttpErrorResponse", message: "Http failure response for http://localhost:8000/auth/register: 0 Unknown Error", … }
-login.ts:67:19
-Cross-Origin Request Blocked: The Same Origin Policy disallows reading the remote resource at http://localhost:8000/auth/register. (Reason: CORS header ‘Access-Control-Allow-Origin’ missing). Status code: 400.
-
-Cross-Origin Request Blocked: The Same Origin Policy disallows reading the remote resource at http://localhost:8000/auth/register. (Reason: CORS request did not succeed). Status code: (null).
-
-Registration failed 
-Object { headers: {…}, status: 0, statusText: "Unknown Error", url: "http://localhost:8000/auth/register", ok: false, type: undefined, redirected: undefined, responseType: undefined, name: "HttpErrorResponse", message: "Http failure response for http://localhost:8000/auth/register: 0 Unknown Error", … }
