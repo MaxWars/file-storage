@@ -7,5 +7,6 @@ export const routes: Routes = [
   { path: 'login', component: Login },
   { path: 'files', component: FileList, canActivate: [authGuard] },
   { path: '', redirectTo: '/login', pathMatch: 'full' },
-  { path: '**', redirectTo: '/login' } // опционально
+  { path: '**', redirectTo: '/login' }
 ];
+
