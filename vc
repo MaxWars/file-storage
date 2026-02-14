@@ -10,11 +10,12 @@ admin@ubuntu:~$ curl -X OPTIONS http://127.0.0.1:8000/auth/register -H "Origin: 
 > 
 * Request completely sent off
 < HTTP/1.1 405 Method Not Allowed
-< date: Sat, 14 Feb 2026 20:20:04 GMT
+< date: Sat, 14 Feb 2026 20:22:47 GMT
 < server: uvicorn
 < allow: POST
 < content-length: 31
 < content-type: application/json
+< access-control-allow-origin: *
 < access-control-allow-credentials: true
 < 
 * Connection #0 to host 127.0.0.1 left intact
