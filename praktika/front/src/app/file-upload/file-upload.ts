@@ -12,11 +12,11 @@ import { ApiService } from '../services/api';
   standalone: true,
   imports: [
     CommonModule,
-    ReactiveFormsModule,    // для formGroup, formControlName
-    MatDialogModule,        // для mat-dialog-content, mat-dialog-actions
-    MatFormFieldModule,     // для mat-form-field
-    MatInputModule,         // для mat-label, input
-    MatButtonModule         // для кнопок
+    ReactiveFormsModule,
+    MatDialogModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatButtonModule
   ],
   templateUrl: './file-upload.html',
   styleUrls: ['./file-upload.scss']
@@ -50,9 +50,10 @@ export class FileUploadComponent {
 
     this.api.uploadFile(formData).subscribe({
       next: () => {
-        this.dialogRef.close(true); // сигнал об успехе
+        this.dialogRef.close(true);
       },
       error: (err) => console.error('Upload error', err)
     });
   }
 }
+
