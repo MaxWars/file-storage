@@ -7,7 +7,6 @@
   <button mat-fab color="primary" class="add-button" (click)="openUploadDialog()">+</button>
 
   <table mat-table [dataSource]="dataSource" class="mat-elevation-z8 full-width">
-    <!-- колонки остаются без изменений -->
     <ng-container matColumnDef="filename">
       <th mat-header-cell *matHeaderCellDef> Имя файла </th>
       <td mat-cell *matCellDef="let file"> {{file.filename}} </td>
@@ -37,3 +36,4 @@
     <tr mat-row *matRowDef="let row; columns: displayedColumns;" (click)="openFileDetail(row)"></tr>
   </table>
 </div>
+
