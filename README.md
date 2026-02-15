@@ -10,7 +10,7 @@ nvm install 20
 nvm use 20
 # установил ангуляр 
 npm install -g @angular/cli
-#После склонировал репозиторий https://github.com/MaxWars/file-storage.git
+# После склонировал репозиторий https://github.com/MaxWars/file-storage.git
 git clone https://github.com/MaxWars/file-storage.git
 # переходим в репозиторий там создаём базу данных и пользователя
 sudo -u postgres psql
