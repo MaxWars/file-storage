@@ -44,7 +44,7 @@ uvicorn app.main:app --host 127.0.0.1 --port 8000
 cd ..
 cd front
 # там установил модули 
-nmp install
+npm install
 # и запуск front
 ng serve --host 127.0.0.1 --port 4200
 # ну если у вас ip отличается то просто ставим localhost
