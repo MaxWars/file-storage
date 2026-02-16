@@ -19,7 +19,7 @@ ALTER USER postgres PASSWORD 'root';
 GRANT ALL PRIVILEGES ON DATABASE file_storage TO postgres;
 \q
 # после переходим в бэк
-cd ~/backend
+cd file-storage/praktika/backend
 # там создаю виртуальное окружение
 python3 -m venv venv
 source venv/bin/activate
