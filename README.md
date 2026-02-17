@@ -39,7 +39,7 @@ ACCESS_TOKEN_EXPIRE_MINUTES=30
 # после провёл миграцию
 alembic upgrade head
 # запустил бэк
-uvicorn app.main:app --host 127.0.0.1 --port 8000
+uvicorn main:app --host 127.0.0.1 --port 8000
 # Дальше перходим в front
 cd ..
 cd front
