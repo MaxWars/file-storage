@@ -32,8 +32,19 @@
       <td mat-cell *matCellDef="let file"> {{file.theme}} </td>
     </ng-container>
 
+    <ng-container matColumnDef="actions">
+      <th mat-header-cell *matHeaderCellDef> Действия </th>
+      <td mat-cell *matCellDef="let file">
+        <button mat-icon-button color="primary" (click)="downloadFile(file); $event.stopPropagation()" matTooltip="Скачать">
+          <mat-icon>download</mat-icon>
+        </button>
+        <button mat-icon-button color="warn" (click)="deleteFile(file); $event.stopPropagation()" matTooltip="Удалить">
+          <mat-icon>delete</mat-icon>
+        </button>
+      </td>
+    </ng-container>
+
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
     <tr mat-row *matRowDef="let row; columns: displayedColumns;" (click)="openFileDetail(row)"></tr>
   </table>
 </div>
-
