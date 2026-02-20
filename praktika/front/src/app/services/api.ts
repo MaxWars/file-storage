@@ -34,4 +34,14 @@ export class ApiService {
   uploadFile(formData: FormData): Observable<any> {
     return this.http.post(`${this.baseUrl}/files/`, formData);
   }
+  downloadFile(id: number): Observable<Blob> {
+    return this.http.get(`${this.baseUrl}/files/${id}/download`, {
+      responseType: 'blob'
+    });
+  }
+
+  deleteFile(id: number): Observable<any> {
+    return this.http.delete(`${this.baseUrl}/files/${id}`);
+  }
+
 }
