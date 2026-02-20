@@ -1,0 +1,2 @@
+Download failed 
+Object { headers: {…}, status: 404, statusText: "Not Found", url: "http://localhost:8000/files/1/download", ok: false, type: undefined, redirected: undefined, responseType: undefined, name: "HttpErrorResponse", message: "Http failure response for http://localhost:8000/files/1/download: 404 Not Found", … }
