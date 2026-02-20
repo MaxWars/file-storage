@@ -1,11 +1,12 @@
 import os
 import shutil
 from uuid import uuid4
-from fastapi import APIRouter, Depends, HTTPException, UploadFile, File, Form
+from fastapi import APIRouter, Depends, HTTPException, UploadFile, File, Form, status
 from sqlalchemy.orm import Session
 from typing import Optional
 from app import models, schemas, auth
 from app.dependencies import get_db
+from fastapi.responses import FileResponse
 
 router = APIRouter(prefix="/files", tags=["files"])
 
@@ -23,12 +24,8 @@ async def upload_file(
     file_ext = os.path.splitext(file.filename)[1]
     stored_filename = f"{uuid4().hex}{file_ext}"
     file_path = os.path.join(UPLOAD_DIR, stored_filename)
-
-    # Сохраняем файл
     with open(file_path, "wb") as buffer:
         shutil.copyfileobj(file.file, buffer)
-
-    # Создаем запись в БД
     db_file = models.File(
         filename=file.filename,
         stored_filename=stored_filename,
@@ -63,3 +60,44 @@ def read_file(
     if not file:
         raise HTTPException(status_code=404, detail="File not found")
     return file
+
+@router.get("/{file_id}/download")
+def download_file(
+    file_id: int,
+    db: Session = Depends(get_db),
+    current_user: models.User = Depends(auth.get_current_active_user)
+):
+    file = db.query(models.File).filter(
+        models.File.id == file_id,
+        models.File.user_id == current_user.id
+    ).first()
+    if not file:
+        raise HTTPException(status_code=404, detail="File not found")
+
+    # Путь к файлу на диске
+    file_path = os.path.join(UPLOAD_DIR, file.stored_filename)
+    if not os.path.exists(file_path):
+        raise HTTPException(status_code=404, detail="File not found on server")
+    return FileResponse(
+        path=file_path,
+        filename=file.filename,
+        media_type='application/octet-stream'
+    )
+
+@router.delete("/{file_id}", status_code=status.HTTP_204_NO_CONTENT)
+def delete_file(
+    file_id: int,
+    db: Session = Depends(get_db),
+    current_user: models.User = Depends(auth.get_current_active_user)
+):
+    file = db.query(models.File).filter(
+        models.File.id == file_id,
+        models.File.user_id == current_user.id
+    ).first()
+    if not file:
+        raise HTTPException(status_code=404, detail="File not found")
+    file_path = os.path.join(UPLOAD_DIR, file.stored_filename)
+    if os.path.exists(file_path):
+        os.remove(file_path)
+    db.delete(file)
+    db.commit()
