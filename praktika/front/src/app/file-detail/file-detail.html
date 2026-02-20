@@ -1,0 +1,8 @@
+<h2 mat-dialog-title>Детали файла</h2>
+<mat-dialog-content>
+  <p><strong>Имя файла:</strong> {{data.filename}}</p>
+  <p><strong>Размер:</strong> {{data.size}} байт</p>
+  <p><strong>Дата загрузки:</strong> {{data.upload_time | date:'medium'}}</p>
+  <p><strong>Описание:</strong> {{data.description}}</p>
+  <p><strong>Тема:</strong> {{data.theme}}</p>
+</mat-dialog-content>
